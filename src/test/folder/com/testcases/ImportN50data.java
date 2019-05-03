@@ -1,6 +1,7 @@
 package com.testcases;
 import com.Util.ScreenShot;
 
+import java.awt.AWTException;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
@@ -27,7 +28,7 @@ public class ImportN50data {
 	}
 	
 	@Test
-	public void test_Import_N50_data() throws IOException {
+	public void test_Import_N50_data() throws IOException, AWTException {
 		homepage = new HomePage(driver);
 		
 		homepage.Navigate_to_Equity_Stocks();	
@@ -35,6 +36,8 @@ public class ImportN50data {
 		screenshot = new ScreenShot();
 			
 		screenshot.take_snap(driver, "D:\\Learn\\BitBucket\\GITPOC\\Screens\\S1.png");
+		
+		screenshot.take_PrintScreen("D:\\Learn\\BitBucket\\GITPOC\\Screens\\S1prtsc.png");
 		
 	}
 	
