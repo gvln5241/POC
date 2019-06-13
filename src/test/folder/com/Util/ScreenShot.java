@@ -12,8 +12,10 @@ import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 public class ScreenShot {
@@ -51,5 +53,36 @@ public class ScreenShot {
 		//save the image to local
 		ImageIO.write(screenFullImage, "png", new File(fileWithPath));
 	}
+	
+	@Test
+	//Crop only web element from screenshot
+	public void crop_WebElement(WebDriver driver, WebElement webelement, String fileWithPath) throws IOException {
+		
+		//connect web driver object
+		TakesScreenshot scrShot = ((TakesScreenshot)driver);
+				
+		//Call getScreenshotAs method to create image file
+		File scrFile=scrShot.getScreenshotAs(OutputType.FILE);
+		
+		BufferedImage fullImg = ImageIO.read(scrFile);
+		
+		//get web element locator
+		Point point = webelement.getLocation();
+		
+		// Get width and height of the element
+		int eleWidth = webelement.getSize().getWidth();
+		int eleHeight = webelement.getSize().getHeight();
+		
+		// Crop the entire page screenshot to get only element screenshot
+		BufferedImage eleScreenshot = fullImg.getSubimage(point.getX(), point.getY(), eleWidth, eleHeight);
+		
+		ImageIO.write(eleScreenshot, "png", new File(fileWithPath));
+		
+		
+	}
+	
+	
+	
+	
 	
 }

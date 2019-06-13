@@ -6,6 +6,12 @@
    
       <!-- 
       <parameter name = "myName" value="manisha"/>
+      
+      <groups>
+         <run>
+            <include name = "WIP" />
+         </run>
+      </groups>
       --> 
       
       <classes>
