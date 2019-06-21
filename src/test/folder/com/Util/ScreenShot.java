@@ -16,11 +16,10 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.Test;
+
 
 public class ScreenShot {
 
-	@Test
 	public void take_snap(WebDriver driver, String fileWithPath) throws IOException {
 		
 		//connect web driver object
@@ -37,7 +36,6 @@ public class ScreenShot {
 		
 	}
 	
-	@Test
 	//with robot class, we can take the screenshot like system print screen
 	//This can be used in capturing the alerts / pop-ups
 	public void take_PrintScreen(String fileWithPath) throws IOException, AWTException {
@@ -54,7 +52,6 @@ public class ScreenShot {
 		ImageIO.write(screenFullImage, "png", new File(fileWithPath));
 	}
 	
-	@Test
 	//Crop only web element from screenshot
 	public void crop_WebElement(WebDriver driver, WebElement webelement, String fileWithPath) throws IOException {
 		
@@ -80,9 +77,5 @@ public class ScreenShot {
 		
 		
 	}
-	
-	
-	
-	
 	
 }

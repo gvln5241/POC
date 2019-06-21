@@ -4,6 +4,7 @@ import com.Util.ExcelUtils;
 
 public class ExcelUtilsDemo {
 
+	@SuppressWarnings("static-access")
 	public static void main(String[] args) {
 		
 		String projectPath= System.getProperty("user.dir");

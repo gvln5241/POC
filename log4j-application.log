@@ -1,0 +1,37 @@
+2019-06-21 19:45:31 INFO  Log4JExample:18 - Hello this is an info message
+2019-06-21 19:53:52 INFO  Log4JExample:18 - Hello this is an info message
+2019-06-21 19:53:52 INFO  Log4JExample:22 - My Info Log
+2019-06-21 19:53:52 WARN  Log4JExample:23 - My Warn Log
+2019-06-21 19:53:52 ERROR Log4JExample:24 - My error log
+2019-06-21 19:53:52 FATAL Log4JExample:25 - My fatal log
+2019-06-21 19:54:28 DEBUG Log4JExample:17 - Hello this is a debug message
+2019-06-21 19:54:28 INFO  Log4JExample:18 - Hello this is an info message
+2019-06-21 19:54:28 DEBUG Log4JExample:21 - My Debug Log
+2019-06-21 19:54:28 INFO  Log4JExample:22 - My Info Log
+2019-06-21 19:54:28 WARN  Log4JExample:23 - My Warn Log
+2019-06-21 19:54:28 ERROR Log4JExample:24 - My error log
+2019-06-21 19:54:28 FATAL Log4JExample:25 - My fatal log
+2019-06-21 19:54:49 DEBUG Log4JExample:17 - Hello this is a debug message
+2019-06-21 19:54:49 INFO  Log4JExample:18 - Hello this is an info message
+2019-06-21 19:54:49 TRACE Log4JExample:20 - My Trace Log
+2019-06-21 19:54:49 DEBUG Log4JExample:21 - My Debug Log
+2019-06-21 19:54:49 INFO  Log4JExample:22 - My Info Log
+2019-06-21 19:54:49 WARN  Log4JExample:23 - My Warn Log
+2019-06-21 19:54:49 ERROR Log4JExample:24 - My error log
+2019-06-21 19:54:49 FATAL Log4JExample:25 - My fatal log
+2019-06-21 19:55:03 DEBUG Log4JExample:17 - Hello this is a debug message
+2019-06-21 19:55:03 INFO  Log4JExample:18 - Hello this is an info message
+2019-06-21 19:55:03 TRACE Log4JExample:20 - My Trace Log
+2019-06-21 19:55:03 DEBUG Log4JExample:21 - My Debug Log
+2019-06-21 19:55:03 INFO  Log4JExample:22 - My Info Log
+2019-06-21 19:55:03 WARN  Log4JExample:23 - My Warn Log
+2019-06-21 19:55:03 ERROR Log4JExample:24 - My error log
+2019-06-21 19:55:03 FATAL Log4JExample:25 - My fatal log
+2019-06-21 19:55:36 DEBUG Log4JExample:17 - Hello this is a debug message
+2019-06-21 19:55:36 INFO  Log4JExample:18 - Hello this is an info message
+2019-06-21 19:55:36 TRACE Log4JExample:20 - My Trace Log
+2019-06-21 19:55:36 DEBUG Log4JExample:21 - My Debug Log
+2019-06-21 19:55:36 INFO  Log4JExample:22 - My Info Log
+2019-06-21 19:55:36 WARN  Log4JExample:23 - My Warn Log
+2019-06-21 19:55:36 ERROR Log4JExample:24 - My error log
+2019-06-21 19:55:36 FATAL Log4JExample:25 - My fatal log

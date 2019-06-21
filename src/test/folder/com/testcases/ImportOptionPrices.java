@@ -1,6 +1,5 @@
 package com.testcases;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -45,7 +44,7 @@ public class ImportOptionPrices {
 	}
 	
 	@Test(priority=0, groups= {"WIP"})
-	public void Import_Option_Data() throws IOException, InterruptedException{
+	public void Import_Option_Data(){
 
 		driver.get("https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=SUNPHARMA&instrument=OPTSTK&strike=370.00&type=PE&expiry=27JUN2019");
 		
