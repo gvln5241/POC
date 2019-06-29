@@ -24,7 +24,7 @@ public class ImportOptionPrices {
 	public void setup() {
 		
 		String ProjectPath = System.getProperty("user.dir");
-		System.setProperty("webdriver.chrome.driver", ProjectPath+"\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", ProjectPath+"\\Drivers\\chromedriver.exe");
         
 		//https://www.built.io/blog/run-selenium-tests-in-headless-browser
 		// headless browser setting are taken form above site

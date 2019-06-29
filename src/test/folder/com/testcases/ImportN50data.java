@@ -22,7 +22,7 @@ public class ImportN50data {
 	@BeforeTest
 	public void setup() {
 		String ProjectPath = System.getProperty("user.dir");
-		System.setProperty("webdriver.chrome.driver", ProjectPath+"\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", ProjectPath+"\\Drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
