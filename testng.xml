@@ -16,6 +16,7 @@
       
       <classes>
          <class name = "com.testcases.ImportOptionPrices" />
+         <class name = "com.testcases.ImportN50data" />
       </classes>
       
    </test>

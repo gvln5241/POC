@@ -15,13 +15,14 @@ import com.pages.HomePage;
 public class ImportN50data {
 
 	WebDriver driver;
-
+	String ProjectPath;
+	
 	HomePage homepage;
 	ScreenShot screenshot;
 
 	@BeforeTest
 	public void setup() {
-		String ProjectPath = System.getProperty("user.dir");
+		ProjectPath = System.getProperty("user.dir");
 		System.setProperty("webdriver.chrome.driver", ProjectPath+"\\Drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -42,11 +43,11 @@ public class ImportN50data {
 
 		screenshot = new ScreenShot();
 
-		screenshot.take_snap(driver, "D:\\Learn\\BitBucket\\GITPOC\\Screens\\S1.png");
+		screenshot.take_snap(driver, ProjectPath+"\\Screens\\S1.png");
 
-		screenshot.take_PrintScreen("D:\\Learn\\BitBucket\\GITPOC\\Screens\\S1prtsc.png");
+		screenshot.take_PrintScreen(ProjectPath+"\\Screens\\S1prtsc.png");
 
-		screenshot.crop_WebElement(driver, driver.findElement(By.xpath("//div[@class='logo']//a//img")), "D:\\Learn\\BitBucket\\GITPOC\\Screens\\elementscreen2.png");
+		screenshot.crop_WebElement(driver, driver.findElement(By.xpath("//div[@class='logo']//a//img")), ProjectPath+"\\Screens\\elementscreen2.png");
 
 	}
 
@@ -56,7 +57,7 @@ public class ImportN50data {
 		homepage.Enter_Script_Name("SBIN");
 		Thread.sleep(2000);
 
-		screenshot.take_snap(driver, "D:\\Learn\\BitBucket\\GITPOC\\Screens\\Script1.png");
+		screenshot.take_snap(driver, ProjectPath+"\\Screens\\Script1.png");
 	}
 
 
