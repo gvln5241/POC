@@ -50,8 +50,9 @@ public class ImportN50data {
 		screenshot.crop_WebElement(driver, driver.findElement(By.xpath("//div[@class='logo']//a//img")), ProjectPath+"\\Screens\\elementscreen2.png");
 
 	}
-
-	@Test(priority=0, groups= {"WIP"})
+	
+	
+	@Test(priority=0, groups= {"WIP"},enabled = false)
 	public void Import_Script_data() throws IOException, InterruptedException{
 
 		homepage.Enter_Script_Name("SBIN");
@@ -59,6 +60,5 @@ public class ImportN50data {
 
 		screenshot.take_snap(driver, ProjectPath+"\\Screens\\Script1.png");
 	}
-
 
 }

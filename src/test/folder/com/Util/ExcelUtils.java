@@ -4,7 +4,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtils {
-	
+
 	//https://www.youtube.com/watch?v=CV3SOorFydE
 	//Selenium Framework for Beginners 18 | How to use Excel for getting data in Selenium Java Framework
 	static String projectPath;
@@ -21,8 +21,6 @@ public class ExcelUtils {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-
 	}
 
 	public static void main(String[] args ) { 
@@ -31,7 +29,7 @@ public class ExcelUtils {
 		getCellDataNumber(1,0);
 	}
 
-	public static void getRowCount() {
+	public static int getRowCount() {
 
 		try {
 
@@ -43,10 +41,12 @@ public class ExcelUtils {
 			System.out.println(exp.getCause());
 			exp.printStackTrace();
 		}
+		
+		return sheet.getPhysicalNumberOfRows();
 
 	}
 
-	public static void getCellDataString(int rowNum, int colNum) {
+	public static String getCellDataString(int rowNum, int colNum) {
 		try {
 
 			String cellData = sheet.getRow(rowNum).getCell(colNum).getStringCellValue();
@@ -58,10 +58,12 @@ public class ExcelUtils {
 			System.out.println(exp.getCause());
 			exp.printStackTrace();
 		}
+		
+		return sheet.getRow(rowNum).getCell(colNum).getStringCellValue();
 
 	}
 
-	public static void getCellDataNumber(int rowNum, int colNum) {
+	public static double getCellDataNumber(int rowNum, int colNum) {
 		try {
 
 			double cellData = sheet.getRow(rowNum).getCell(colNum).getNumericCellValue();
@@ -73,7 +75,18 @@ public class ExcelUtils {
 			System.out.println(exp.getCause());
 			exp.printStackTrace();
 		}
-
+		
+		return sheet.getRow(rowNum).getCell(colNum).getNumericCellValue();
+		
+	}
+	
+	public static void writeIntoCell(String sheetName, int rowNum, int colNum, String data) {
+		
+				
 	}
 
+	public static void writeIntoCell(String sheetName, int rowNum, int colNum,  double data) {
+		
+		
+	}
 }

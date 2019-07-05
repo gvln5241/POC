@@ -8,11 +8,11 @@ public class ExcelUtilsDemo {
 	public static void main(String[] args) {
 		
 		String projectPath= System.getProperty("user.dir");
-		ExcelUtils excel = new ExcelUtils(projectPath+"/DB/Excel1.xlsx","Sheet1");
+		ExcelUtils excel = new ExcelUtils(projectPath+"/DB/Excel1.xlsx","Main");
 		
-		excel.getRowCount();
-		excel.getCellDataString(0, 0);
-		excel.getCellDataNumber(1, 0);
+		System.out.println(excel.getRowCount());
+		excel.getCellDataString(1, 0);
+		//excel.getCellDataNumber(1, 0);
 	}
 
 }

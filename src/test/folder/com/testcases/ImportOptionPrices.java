@@ -1,7 +1,15 @@
 package com.testcases;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,6 +23,8 @@ import com.pages.HomePage;
 
 public class ImportOptionPrices {
 
+	static String projectPath = System.getProperty("user.dir");
+
 	WebDriver driver;
 
 	HomePage homepage;
@@ -23,14 +33,13 @@ public class ImportOptionPrices {
 	@BeforeTest
 	public void setup() {
 
-		String ProjectPath = System.getProperty("user.dir");
-		System.setProperty("webdriver.chrome.driver", ProjectPath+"\\Drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", projectPath+"\\Drivers\\chromedriver.exe");
 
 		//https://www.built.io/blog/run-selenium-tests-in-headless-browser
 		// headless browser setting are taken form above site
 
 		ChromeOptions options = new ChromeOptions();
-		//options.addArguments("headless");
+		options.addArguments("headless");
 		options.addArguments("window-size=1200x600");
 
 		driver = new ChromeDriver(options);
@@ -48,14 +57,26 @@ public class ImportOptionPrices {
 
 
 	@Test(priority=0, groups= {"WIP"})
-	public void Import_Option_Data(){
+	public void Import_Option_Data() throws IOException{
 
 		driver.get("https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=SUNPHARMA&instrument=OPTSTK&strike=400.00&type=PE&expiry=25JUL2019");
-
-		//screenshot = new ScreenShot();
-		//screenshot.take_snap(driver, "D:\\Learn\\BitBucket\\GITPOC\\Screens\\OptionPrice1.png");
-
 		System.out.println(driver.findElement(By.xpath("//span[@id='lastPrice']")).getText());
+
+		FileInputStream fis = new FileInputStream(projectPath+"/DB/Excel1.xlsx");
+		Workbook excel = new XSSFWorkbook(fis);
+		Sheet sheet = excel.getSheet("Main");
+
+		for (int i = 0; i <= sheet.getPhysicalNumberOfRows(); i++) {
+			driver.get(sheet.getRow(i).getCell(0).getStringCellValue());
+			Cell cell = sheet.getRow(i).createCell(1);
+			cell.setCellValue(driver.findElement(By.xpath("//span[@id='lastPrice']")).getText());
+
+		}
+		fis.close();
+
+		FileOutputStream fio = new FileOutputStream(projectPath+"/DB/Excel1.xlsx");
+		excel.write(fio);
+		fio.close();
 
 	}
 
