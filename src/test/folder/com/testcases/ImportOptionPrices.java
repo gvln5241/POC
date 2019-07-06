@@ -59,22 +59,28 @@ public class ImportOptionPrices {
 	@Test(priority=0, groups= {"WIP"})
 	public void Import_Option_Data() throws IOException{
 
-		driver.get("https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=SUNPHARMA&instrument=OPTSTK&strike=400.00&type=PE&expiry=25JUL2019");
-		System.out.println(driver.findElement(By.xpath("//span[@id='lastPrice']")).getText());
+		//driver.get("https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=SUNPHARMA&instrument=OPTSTK&strike=400.00&type=PE&expiry=25JUL2019");
+		//System.out.println(driver.findElement(By.xpath("//span[@id='lastPrice']")).getText());
 
-		FileInputStream fis = new FileInputStream(projectPath+"/DB/Excel1.xlsx");
+		FileInputStream fis = new FileInputStream(projectPath+"/DB/Excel2.xlsx");
 		Workbook excel = new XSSFWorkbook(fis);
 		Sheet sheet = excel.getSheet("Main");
 
-		for (int i = 0; i <= sheet.getPhysicalNumberOfRows(); i++) {
+		for (int i = 1; i < sheet.getPhysicalNumberOfRows(); i++) {
+			System.out.println(sheet.getRow(i).getCell(0).getStringCellValue());
+			
 			driver.get(sheet.getRow(i).getCell(0).getStringCellValue());
 			Cell cell = sheet.getRow(i).createCell(1);
+						
+			//System.out.println(driver.findElement(By.xpath("//span[@id='lastPrice']")));
+			System.out.println(driver.findElement(By.xpath("//span[@id='lastPrice']")).getText());
+			
 			cell.setCellValue(driver.findElement(By.xpath("//span[@id='lastPrice']")).getText());
-
 		}
+		
 		fis.close();
 
-		FileOutputStream fio = new FileOutputStream(projectPath+"/DB/Excel1.xlsx");
+		FileOutputStream fio = new FileOutputStream(projectPath+"/DB/Excel2.xlsx");
 		excel.write(fio);
 		fio.close();
 
