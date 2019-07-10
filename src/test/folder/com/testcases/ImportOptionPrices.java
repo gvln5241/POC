@@ -18,6 +18,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.Util.ScreenShot;
+import com.pages.FoPage;
 import com.pages.HomePage;
 
 public class ImportOptionPrices {
@@ -27,6 +28,7 @@ public class ImportOptionPrices {
 	WebDriver driver;
 
 	HomePage homepage;
+	FoPage fopage;
 	ScreenShot screenshot;
 
 	@BeforeTest
@@ -46,6 +48,9 @@ public class ImportOptionPrices {
 		driver.manage().window().maximize();
 		driver.get("https://nseindia.com/");
 		homepage = new HomePage(driver);
+		fopage = new FoPage(driver);
+
+		//FoPage foPage = PageFactory.initElements(driver, FoPage.class);
 	}
 
 
@@ -61,22 +66,33 @@ public class ImportOptionPrices {
 		//driver.get("https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=SUNPHARMA&instrument=OPTSTK&strike=400.00&type=PE&expiry=25JUL2019");
 		//System.out.println(driver.findElement(By.xpath("//span[@id='lastPrice']")).getText());
 
+
 		FileInputStream fis = new FileInputStream(projectPath+"/DB/Excel2.xlsx");
 		Workbook excel = new XSSFWorkbook(fis);
 		Sheet sheet = excel.getSheet("Main");
 
 		for (int i = 1; i < sheet.getPhysicalNumberOfRows(); i++) {
 			System.out.println(sheet.getRow(i).getCell(0).getStringCellValue());
-			
+
 			driver.get(sheet.getRow(i).getCell(0).getStringCellValue());
+
+			//System.out.println("CMP - " + Last_Price.getText());
+			System.out.println("CMP - " + driver.findElement(By.xpath("//span[@id='lastPrice']")).getText());
+			System.out.println("Max - " + driver.findElement(By.xpath("//div[@id='dayHigh']")).getText());
+			System.out.println("IV  - " + driver.findElement(By.xpath("//span[@id='impliedVolatility']")).getText());
+
 			Cell cell = sheet.getRow(i).createCell(1);
-						
-			//System.out.println(driver.findElement(By.xpath("//span[@id='lastPrice']")));
-			System.out.println(driver.findElement(By.xpath("//span[@id='lastPrice']")).getText());
-			
 			cell.setCellValue(driver.findElement(By.xpath("//span[@id='lastPrice']")).getText());
+
+			cell = sheet.getRow(i).createCell(2);
+			cell.setCellValue(driver.findElement(By.xpath("//div[@id='dayHigh']")).getText());
+
+			cell = sheet.getRow(i).createCell(3);
+			cell.setCellValue(driver.findElement(By.xpath("//span[@id='impliedVolatility']")).getText());
+
+
 		}
-		
+
 		fis.close();
 
 		FileOutputStream fio = new FileOutputStream(projectPath+"/DB/Excel2.xlsx");

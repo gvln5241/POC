@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 
 import com.pages.HomePage;
@@ -16,7 +17,7 @@ public class ImportN50data {
 
 	WebDriver driver;
 	String ProjectPath;
-	
+
 	HomePage homepage;
 	ScreenShot screenshot;
 
@@ -24,7 +25,13 @@ public class ImportN50data {
 	public void setup() {
 		ProjectPath = System.getProperty("user.dir");
 		System.setProperty("webdriver.chrome.driver", ProjectPath+"\\Drivers\\chromedriver.exe");
-		driver = new ChromeDriver();
+
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("headless");
+		options.addArguments("window-size=1200x600");
+
+		driver = new ChromeDriver(options);
+		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get("https://nseindia.com/");
@@ -36,7 +43,7 @@ public class ImportN50data {
 		driver.quit();
 	}
 
-	@Test(priority=1, groups= {"ready"})
+	@Test(priority=1, groups= {"ready"},enabled = false)
 	public void test_Import_N50_data() throws IOException, AWTException {
 
 		homepage.Navigate_to_Equity_Stocks();	
@@ -50,8 +57,8 @@ public class ImportN50data {
 		screenshot.crop_WebElement(driver, driver.findElement(By.xpath("//div[@class='logo']//a//img")), ProjectPath+"\\Screens\\elementscreen2.png");
 
 	}
-	
-	
+
+
 	@Test(priority=0, groups= {"WIP"},enabled = false)
 	public void Import_Script_data() throws IOException, InterruptedException{
 
@@ -60,5 +67,12 @@ public class ImportN50data {
 
 		screenshot.take_snap(driver, ProjectPath+"\\Screens\\Script1.png");
 	}
+
+	@Test(priority=2, groups= {"WIP"},enabled=true)
+	public void FO_Page() throws IOException {
+		homepage.Navigate_to_FO_stocks();
+		homepage.Open_Excel_and_write_FO_data();
+	}
+
 
 }
