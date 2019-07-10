@@ -13,6 +13,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -101,18 +102,13 @@ public class HomePage {
 
 		for (int i=3; i<161 ;i++) {
 
-			//System.out.println(excel_Last_Row);
-			//System.out.println(sheet.getRow(0).getCell(0).getStringCellValue());
 			cell = sheet.createRow(excel_Last_Row+i-3).createCell(0);
 			cell.setCellValue(dateFormat.format(date));
 
 
 			for (int j=1; j<18;j++) {
-				//String c_Name = driver.findElement(By.xpath("//tr[1]//th[" + j + "]")).getText();
 				String data = driver.findElement(By.xpath("//tr[" + i + "]//td[" + j + "]")).getText();
-				//System.out.print(c_Name + " '"+ data + "' ");
-				//System.out.print(j + " '"+ data + "' ");
-
+			
 				cell = sheet.getRow(excel_Last_Row+i-3).createCell(j);
 				cell.setCellValue(data);
 
@@ -121,14 +117,25 @@ public class HomePage {
 		}
 
 
-		FileOutputStream fio = null;
+		FileOutputStream fos = null;
 		try {
-			fio = new FileOutputStream(projectPath+"/DB/Excel2.xlsx");
-			excel.write(fio);
-			fio.close();
+			fos = new FileOutputStream(projectPath+"/DB/Excel2.xlsx");
+			excel.write(fos);
+			fos.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
+	
+	public void Open_Script_In_New_Window() {
+		
+		System.out.println(driver.getTitle());
+		String URL_in_New_Window = Keys.chord(Keys.CONTROL,Keys.RETURN);
+		driver.findElement(By.xpath("//tr[3]//td[1]")).sendKeys(URL_in_New_Window);
+		System.out.println(driver.getTitle());
+		
+	}
+	
+	
 }

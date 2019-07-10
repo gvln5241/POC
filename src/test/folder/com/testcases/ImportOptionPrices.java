@@ -60,12 +60,8 @@ public class ImportOptionPrices {
 	}
 
 
-	@Test(priority=0, groups= {"WIP"})
+	@Test(priority=0, groups= {"Ready"})
 	public void Import_Option_Data() throws IOException{
-
-		//driver.get("https://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/GetQuoteFO.jsp?underlying=SUNPHARMA&instrument=OPTSTK&strike=400.00&type=PE&expiry=25JUL2019");
-		//System.out.println(driver.findElement(By.xpath("//span[@id='lastPrice']")).getText());
-
 
 		FileInputStream fis = new FileInputStream(projectPath+"/DB/Excel2.xlsx");
 		Workbook excel = new XSSFWorkbook(fis);

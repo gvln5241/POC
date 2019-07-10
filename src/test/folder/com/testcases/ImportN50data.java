@@ -43,7 +43,7 @@ public class ImportN50data {
 		driver.quit();
 	}
 
-	@Test(priority=1, groups= {"ready"},enabled = false)
+	@Test(priority=1, groups= {"Ready"},enabled = false)
 	public void test_Import_N50_data() throws IOException, AWTException {
 
 		homepage.Navigate_to_Equity_Stocks();	
@@ -72,6 +72,7 @@ public class ImportN50data {
 	public void FO_Page() throws IOException {
 		homepage.Navigate_to_FO_stocks();
 		homepage.Open_Excel_and_write_FO_data();
+		//homepage.Open_Script_In_New_Window();
 	}
 
 
